@@ -5,7 +5,7 @@ from langchain.prompts.chat import ChatPromptTemplate, SystemMessagePromptTempla
 AI71_BASE_URL = "https://api.ai71.ai/v1/"
 
 def get_ai71_chat(api_key):
-    print(f"Using API Key: {api_key}")  # Debugging statement
+    #print(f"Using API Key: {api_key}")  # Debugging statement
     return ChatOpenAI(
         model="tiiuae/falcon-180B-chat",
         api_key=api_key,
