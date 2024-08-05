@@ -14,5 +14,7 @@ venv.bak/
 a/
 .vscode
 
+#__pycache__
 agents/__pycache__
 helpers/__pycache__
+modules/__pycache__
