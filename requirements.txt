@@ -1,0 +1,5 @@
+langchain_openai
+langchain
+streamlit
+youtube_transcript_api
+pytube
