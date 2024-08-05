@@ -26,13 +26,6 @@ def ask_question(transcription, question, api_key):
         - If the user's question is not relevant to the content of the transcription, respond with "Your question is not relevant to the YouTube video. Please ask about the YouTube video link that you provide." or answer in the language that the user provided.
         - Ensure your answer is no more than 50 words.
 
-        Example Conversation:
-            What is this video talking about?
-            This video is about the new language model called "Falcon 180b" developed by Tii. It is currently the most powerful large language model in the world with 180 billion parameters, trained on 3.5 trillion tokens, and is open access for both researchers and commercial users. Tii is striving to create a more inclusive AI world with this new technology.
-            Explain with Tetum language
-            Video ne'e hakerek kona ba modelu lian foun naran "Falcon 180b" ne'ebé desenvolve husi Tii. Modelu ida ne'e mak modelu lian bo'ot liu iha mundu ne'ebé iha 180 bilyon parametru sira, treinadu iha liña 3.5 trilhaun token, no atu mai maka'ak horik-kria ai-hanoin komersial nian hodi peskizadór sira bele uza. Tii buka atu kria mundu AI ida ne'ebé liu ho teknoloji foun ne'e.
-
-
     Question: {question}
     """
     try:
