@@ -1,5 +1,5 @@
 import streamlit as st
-import base64  # Ensure this import is present
+import base64
 from modules.variables import initialize_session_state
 from helpers.youtube_utils import extract_video_id_from_url, get_transcript_text
 from modules.quiz import create_quiz, display_quiz, display_quiz_results
@@ -29,7 +29,7 @@ with st.sidebar:
     st.sidebar.markdown("---")
     st.header("👨‍💻 About the Author")
     st.write("""
-    Hello! I'm **Ajito Nelson**, a native Tetum 🇹🇱 speaker with a keen interest in Machine Learning and Artificial Intelligence.
+    Hello! I'm **Ajito Nelson**, a native Tetum 🇹🇱 speaker with a keen interest in Data Engineering and Artificial Intelligence.
     """)
 
     st.divider()
@@ -52,16 +52,16 @@ with st.sidebar:
 st.title(":green[Lkwiz-YT] — Watch. Ask. Quiz. 🐊", anchor=False)
 st.write("""
 Ever watched a YouTube video and wondered how well you understood its content? With **Lkwiz-YT**, you can challenge yourself and test your comprehension with engaging quizzes. Dive deeper by asking questions about the video's content, ensuring your inquiries are relevant. Join us for a fun, educational experience and see how much you really know!
-
-**How does it work?** 🤔
-
-1. Paste the YouTube video URL of your recently watched video.
-2. Enter your [AI71 API Key](https://lablab.ai/t/ai71-platform-guide).
-
-⚠️ Important: The video **must** have English captions for the tool to work.
-
-Once you've input the details! Dive deep into questions crafted just for you, ensuring you've truly grasped the content of the video. Let's put your knowledge to the test!
 """)
+with st.expander("**How does it work?** 🤔"):
+    st.write("""
+    1. Paste the YouTube video URL of your recently watched video.
+    2. Enter your [AI71 API Key](https://lablab.ai/t/ai71-platform-guide).
+    
+    ⚠️ Important: The video **must** English captions for the tool to function effectively and provide the best response.
+    
+    Once you've input the details! Dive deep into questions crafted just for you, ensuring you've truly grasped the content     of the video. Let's put your knowledge to the test!
+    """)
 
 with st.form("user_input"):
     YOUTUBE_URL = st.text_input("Enter the YouTube video link:", value="https://www.youtube.com/watch?v=9MArp9H2YCM")
@@ -74,23 +74,21 @@ centered_text_1 = """
 </div>
 """
 
-if submitted or ('video_id' in st.session_state and st.session_state.video_id):
-    if not YOUTUBE_URL:
-        st.info("Please provide a valid YouTube video link.")
-        st.stop()
-    elif not AI71_API_KEY:
-        st.info("Please fill out the AI71 API Key to proceed.")
-        st.stop()
+if submitted:
+    st.session_state.video_id = extract_video_id_from_url(YOUTUBE_URL)
+    st.session_state.video_transcription = get_transcript_text(st.session_state.video_id)
+    st.session_state.show_chat = False
+    st.session_state.quiz_started = False
+    st.session_state.chat_history = []
+    st.session_state.quiz_data_list = []
+    st.session_state.user_answers = []
+    st.session_state.correct_answers = []
+    st.session_state.randomized_options = []
+    st.session_state.score_submitted = False
 
+if st.session_state.video_id:
     with st.expander("🎬 Click Here To Watch The Video Again"):
         st.video(YOUTUBE_URL)
-
-    if submitted:
-        # Extract video ID and fetch transcript only if not done previously
-        if 'video_transcription' not in st.session_state or not st.session_state.video_transcription:
-            with st.spinner("Fetching video transcription..."):
-                st.session_state.video_id = extract_video_id_from_url(YOUTUBE_URL)
-                st.session_state.video_transcription = get_transcript_text(st.session_state.video_id)
 
     st.markdown(centered_text_1, unsafe_allow_html=True)
     empty_col1, col1, col2, empty_col2 = st.columns([1, 1, 1, 1])
@@ -99,17 +97,19 @@ if submitted or ('video_id' in st.session_state and st.session_state.video_id):
         if st.button("Open Chat Panel"):
             st.session_state.show_chat = True
             st.session_state.quiz_started = False
+            st.session_state.score_submitted = False  
 
     with col2:
         if st.button("Create a Quiz"):
             st.session_state.show_chat = False
             st.session_state.quiz_started = True
+            st.session_state.score_submitted = False 
             create_quiz(st.session_state.video_transcription, AI71_API_KEY)
 
 if st.session_state.show_chat:
-    display_chat(AI71_API_KEY)  # Pass the AI71_API_KEY here
-
+    display_chat(AI71_API_KEY) 
 if st.session_state.quiz_started:
     display_quiz()
 
-display_quiz_results()
+if st.session_state.score_submitted:
+    display_quiz_results(AI71_API_KEY) 
