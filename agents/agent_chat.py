@@ -1,6 +1,7 @@
 import streamlit as st
 from langchain_openai import ChatOpenAI
 from langchain.prompts.chat import ChatPromptTemplate, SystemMessagePromptTemplate, HumanMessagePromptTemplate
+from helpers.prompt_utils import get_system_prompt_ask
 
 AI71_BASE_URL = "https://api.ai71.ai/v1/"
 
@@ -14,20 +15,7 @@ def get_ai71_chat(api_key):
     )
 
 def ask_question(transcription, question, api_key):
-    template = """
-    You are a helpful assistant. Given the following transcription of a YouTube video, answer the user's question based on the content:
-    {transcription}
-
-        Instructions:
-        - If this is the user's first question, respond with "Hi, I'm Lkwiz-YT, your YouTube video link assistant." and answer the question if there is one.
-            - Example Question: Can you use Indonesian language?
-            - Example Answer: Hi, I'm Lkwiz-YT, your YouTube video link assistant. Yes, I can use Indonesian language.
-        - If the user asks to use Indonesian language or any other specific language, respond in that language and continue to use that language until the user requests to switch to another language.
-        - If the user's question is not relevant to the content of the transcription, respond with "Your question is not relevant to the YouTube video. Please ask about the YouTube video link that you provide." or answer in the language that the user provided.
-        - Ensure your answer is no more than 50 words.
-
-    Question: {question}
-    """
+    template = get_system_prompt_ask()
     try:
         system_message_prompt = SystemMessagePromptTemplate.from_template(template)
         human_message_prompt = HumanMessagePromptTemplate.from_template("{question}")
