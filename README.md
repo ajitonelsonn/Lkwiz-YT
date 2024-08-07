@@ -12,6 +12,8 @@ Lkwiz-YT is an interactive platform designed to help users better understand and
 
 Our mission is to transform passive video watching into an active learning process, making it easier for everyone, especially non-native English speakers, to grasp complex topics and improve their knowledge retention.
 
+Explore more about our journey and application at: [Lkwiz-YT at the Falcon Hackathon in Lalabai](https://lablab.ai/event/falcon-hackathon/lafaek-ai/lkwiz-yt)
+
 ## 2. How Lkwiz-YT Works Using Falcon 180B with AI71 API
 
 Lkwiz-YT enhances YouTube video comprehension through an interactive process that leverages advanced AI technology. Here's how it works:
