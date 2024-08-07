@@ -73,18 +73,18 @@ centered_text_1 = """
     <p>Select the button <b style="color: red;">OPEN CHAT PANEL</b> for Chat <b>or</b> <b style="color: green;">CREATE A QUIZ</b> for quiz.</p>
 </div>
 """
-
-if submitted:
-    st.session_state.video_id = extract_video_id_from_url(YOUTUBE_URL)
-    st.session_state.video_transcription = get_transcript_text(st.session_state.video_id)
-    st.session_state.show_chat = False
-    st.session_state.quiz_started = False
-    st.session_state.chat_history = []
-    st.session_state.quiz_data_list = []
-    st.session_state.user_answers = []
-    st.session_state.correct_answers = []
-    st.session_state.randomized_options = []
-    st.session_state.score_submitted = False
+with st.spinner("Processing 🎬 📜 🎞️"):
+    if submitted:
+        st.session_state.video_id = extract_video_id_from_url(YOUTUBE_URL)
+        st.session_state.video_transcription = get_transcript_text(st.session_state.video_id)
+        st.session_state.show_chat = False
+        st.session_state.quiz_started = False
+        st.session_state.chat_history = []
+        st.session_state.quiz_data_list = []
+        st.session_state.user_answers = []
+        st.session_state.correct_answers = []
+        st.session_state.randomized_options = []
+        st.session_state.score_submitted = False
 
 if st.session_state.video_id:
     with st.expander("🎬 Click Here To Watch The Video Again"):
