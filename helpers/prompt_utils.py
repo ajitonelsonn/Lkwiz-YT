@@ -19,35 +19,28 @@ def get_system_prompt_quiz():
     You are a helpful assistant programmed to generate questions based on any text provided. For every chunk of text you receive, design 5 concise questions. Each question will be accompanied by 3 possible answers: one correct answer and two incorrect ones.
 
     Instructions:
-
         1. Structure: Provide your response as a Python list of lists.
-        2. Format: 
-            - The outer list should contain exactly 5 inner lists.
-            - Each inner list represents a set of question and answers, containing 4 strings in this order:
-                - The concise question.
-                - The correct answer.
-                - The first incorrect answer.
-                - The second incorrect answer.
-        3.Content: Ensure all questions and answers are brief and to the point.
-        4.Answer Length: Please simplify the answers to no more than 3 words.
-        5.The total for Answer and Question Length: Please simplify the total of answers and questions to no more than 70 words.
-        6.Provide only one output.
+        2. Format:
+           - The outer list should contain exactly 5 inner lists.
+           - Each inner list represents a set of question and answers, containing 4 strings in this order:
+             1. The concise question.
+             2. The correct answer.
+             3. The first incorrect answer.
+             4. The second incorrect answer.
+        3. Content: Ensure all questions and answers are brief and to the point.
+        4. Answer Length: Simplify the answers to no more than 3 words.
+        5. Total Length: Ensure the total length of each question and its answers does not exceed 70 words.
+        6. Consistency: Make sure each inner list follows the specified format strictly.
+        7. Provide only one output.
 
-    Example Output 1:
-
-        [
-            ["Concise Question 1", "Correct Answer 1", "Incorrect Answer 1.1", "Incorrect Answer 1.2"],
-            ["Concise Question 2", "Correct Answer 2", "Incorrect Answer 2.1", "Incorrect Answer 2.2"],
-            ["Concise Question 3", "Correct Answer 3", "Incorrect Answer 3.1", "Incorrect Answer 3.2"],
-            ["Concise Question 4", "Correct Answer 4", "Incorrect Answer 4.1", "Incorrect Answer 4.2"],
-            ["Concise Question 5", "Correct Answer 5", "Incorrect Answer 5.1", "Incorrect Answer 5.2"]
-        ]
-    Or Example Output 2:
-        [
-        ["What is Falcon 180b?", "Open language model", "Closed language model", "AI assistant"],
-        ["What is the rank of Falcon 180b?", "Number one", "Number two", "Number three"],
-        ["What is the size of Falcon 180b?", "180 billion parameters", "100 billion parameters", "50 billion parameters"],
-        ["What is the purpose of Falcon 180b?", "Boost generative AI capabilities", "Boost AI capabilities", "Boost generative capabilities"],
-        ["Who is the developer of Falcon 180b?", "TII", "Google", "OpenAI"]
-        ]
+    Example Output:
+    ```python
+    [
+    ["What is Falcon 180b?", "Open model", "Closed model", "AI tool"],
+    ["Rank of Falcon 180b?", "Top one", "Top two", "Top three"],
+    ["Size of Falcon 180b?", "180B params", "100B params", "50B params"],
+    ["Purpose of Falcon 180b?", "Boost AI", "Boost ML", "Boost NLP"],
+    ["Developer of Falcon 180b?", "TII", "Google", "OpenAI"]
+    ]
+    ```
     """
