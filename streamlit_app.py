@@ -51,7 +51,7 @@ with st.sidebar:
 
 st.title(":green[Lkwiz-YT] — Watch. Ask. Quiz. 🐊", anchor=False)
 st.write("""
-Ever watched a YouTube video and wondered how well you understood its content? With **Lkwiz-YT**, you can challenge yourself and test your comprehension with engaging quizzes. Dive deeper by asking questions about the video's content, ensuring your inquiries are relevant. Join us for a fun, educational experience and see how much you really know!
+Ever watched a YouTube video and wondered how well you understood its content? With **Lkwiz-YT**, you can challenge yourself and test your comprehension with engaging quizzes. Dive deeper by asking questions about the video's content, ensuring your inquiries are relevant. Join us for a fun, educational experience and see how much you really know! Explore more about our journey and application at: [Lkwiz-YT at the Falcon Hackathon in Lalabai](https://lablab.ai/event/falcon-hackathon/lafaek-ai/lkwiz-yt)
 """)
 with st.expander("**How does it work?** 🤔"):
     st.write("""
