@@ -3,7 +3,7 @@ from agents.agent_quiz import get_quiz_data
 from helpers.quiz_utils import get_randomized_options
 
 def create_quiz(video_transcription, AI71_API_KEY):
-    with st.spinner("Crafting your quiz...🤓"):
+    with st.spinner("Crafting your quiz..."):
         quiz_data = get_quiz_data(video_transcription, AI71_API_KEY)
         if quiz_data:
             st.session_state.quiz_data_list = quiz_data
@@ -15,7 +15,7 @@ def create_quiz(video_transcription, AI71_API_KEY):
                 st.session_state.randomized_options.append(options)
                 st.session_state.correct_answers.append(correct_answer)
         else:
-            st.error("Please try again.👩‍🎤")
+            st.error("👩‍🎤Please try again!")
             st.session_state.quiz_started = False
 
 def display_quiz():
