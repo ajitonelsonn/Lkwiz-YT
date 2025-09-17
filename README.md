@@ -111,9 +111,6 @@ This will start the Streamlit server, and you should see output indicating the l
    - You can ask questions about the video in the chat panel.
    - You can generate and take the quiz.
 
-## 6. Contributions
-
-If you'd like to contribute to Lkwiz-YT, please fork the repository and create a pull request with your features or fixes.
 
 ## Thank You
 
